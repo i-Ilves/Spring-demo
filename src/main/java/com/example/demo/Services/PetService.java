@@ -26,4 +26,8 @@ public class PetService {
         return petRepository.findAllBySpeciesIgnoreCase(specie);
     }
 
+    public List<Pet> getAllPetsByName(String name) {
+        return petRepository.findAllPetsByNameIgnoreCase(name);
+    }
+
 }

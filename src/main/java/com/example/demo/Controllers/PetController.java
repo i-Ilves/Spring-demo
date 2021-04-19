@@ -30,4 +30,10 @@ public class PetController {
         public List<Pet> getAllPetsBySpecies(@PathVariable String specie) {
         return petService.getAllPetsBySpecie(specie);
     }
+
+    @GetMapping("/api/pets/name/{name}")
+    public List<Pet> getAllPetsByName(@PathVariable String name) {
+        return petService.getAllPetsByName(name);
+    }
+
 }

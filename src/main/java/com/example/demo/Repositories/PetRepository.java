@@ -10,5 +10,7 @@ import java.util.List;
 public interface PetRepository extends CrudRepository<Pet, Integer> {
 
     public List<Pet> findAllBySpeciesIgnoreCase(String specie);
+
+    List<Pet> findAllPetsByNameIgnoreCase(String name);
 }
 
