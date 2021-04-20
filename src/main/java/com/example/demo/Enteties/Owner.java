@@ -3,6 +3,7 @@ package com.example.demo.Enteties;
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.util.List;
 
 @Entity
 @Table(name = "owners")
@@ -13,7 +14,18 @@ public class Owner {
     private int id;
     private String name;
 
+    @OneToMany(mappedBy = "owner")
+    private List<Pet> listOfPets;
+
     public Owner() {
+    }
+
+    public List<Pet> getListOfPets() {
+        return listOfPets;
+    }
+
+    public void setListOfPets(List<Pet> listOfPets) {
+        this.listOfPets = listOfPets;
     }
 
     public int getId() {

@@ -12,6 +12,10 @@ public class Pet {
     private String name;
     private String species;
 
+    @ManyToOne
+    @JoinColumn(name = "owner")
+    private Owner owner;
+
     public Pet() {
     }
 
