@@ -3,9 +3,7 @@ package com.example.demo.Controllers;
 import com.example.demo.Enteties.Owner;
 import com.example.demo.Services.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,5 +26,15 @@ public class OwnerController {
         @GetMapping("/api/owners/name/{name}")
         public List<Owner> getAllOwnersByName(@PathVariable String name) {
             return ownerService.getAllOwnersByName(name);
+        }
+
+        @PostMapping("/api/owners")
+        public Owner addNewOwner(@RequestBody Owner owner) {
+            return ownerService.addNewOwner(owner);
+        }
+
+        @DeleteMapping("/api/owners/{id}")
+        public void deleteOwner(@PathVariable int id) {
+            ownerService.deleteOwner(id);
         }
 }

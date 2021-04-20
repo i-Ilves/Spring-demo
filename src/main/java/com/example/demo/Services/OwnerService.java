@@ -28,4 +28,13 @@ public class OwnerService {
         return (List<Owner>) ownerRepository.findAll();
     }
 
+    public Owner addNewOwner(Owner owner) {
+        ownerRepository.save(owner);
+        return owner;
+    }
+
+
+    public void deleteOwner(int id) {
+        ownerRepository.deleteById(id);
+    }
 }
