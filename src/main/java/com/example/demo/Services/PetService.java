@@ -30,4 +30,19 @@ public class PetService {
         return petRepository.findAllPetsByNameIgnoreCase(name);
     }
 
+    public Pet addNewPet(Pet pet) {
+        petRepository.save(pet);
+        return pet;
+    }
+
+    public void deletePet(int id) {
+        petRepository.deleteById(id);
+    }
+
+    public void updatePet(int id, Pet pet) {
+        if(petRepository.existsById(id)) {
+            pet.setId(id);
+            petRepository.save(pet);
+        }
+    }
 }

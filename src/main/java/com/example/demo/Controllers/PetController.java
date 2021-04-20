@@ -1,11 +1,10 @@
 package com.example.demo.Controllers;
 
+import com.example.demo.Enteties.Owner;
 import com.example.demo.Enteties.Pet;
 import com.example.demo.Services.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,6 +33,21 @@ public class PetController {
     @GetMapping("/api/pets/name/{name}")
     public List<Pet> getAllPetsByName(@PathVariable String name) {
         return petService.getAllPetsByName(name);
+    }
+
+    @PostMapping("/api/pets")
+    public Pet addNewPet(@RequestBody Pet pet){
+        return petService.addNewPet(pet);
+    }
+
+    @DeleteMapping("/api/pets/{id}")
+    public void deletePet(@PathVariable int id) {
+        petService.deletePet(id);
+    }
+
+    @PutMapping("/api/pets/{id}")
+    public void updatePet(@PathVariable int id, @RequestBody Pet pet) {
+        petService.updatePet(id, pet);
     }
 
 }
