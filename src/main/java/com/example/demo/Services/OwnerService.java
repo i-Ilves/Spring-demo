@@ -37,4 +37,12 @@ public class OwnerService {
     public void deleteOwner(int id) {
         ownerRepository.deleteById(id);
     }
+
+    public void updateOwner(int id, Owner owner) {
+        if (ownerRepository.existsById(id)) {
+            owner.setId(id);
+            ownerRepository.save(owner);
+        }
+
+    }
 }
