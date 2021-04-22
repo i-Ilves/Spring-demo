@@ -19,6 +19,10 @@ public class Pet {
     public Pet() {
     }
 
+    public void setOwner(Owner owner) {
+        this.owner = owner;
+    }
+
     public int getId() {
         return id;
     }

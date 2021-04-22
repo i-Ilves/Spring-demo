@@ -1,7 +1,9 @@
 package com.example.demo.Services;
 
 import com.example.demo.Enteties.Owner;
+import com.example.demo.Enteties.Pet;
 import com.example.demo.Repositories.OwnerRepository;
+import com.example.demo.Repositories.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,9 @@ public class OwnerService {
 
     @Autowired
     OwnerRepository ownerRepository;
+
+    @Autowired
+    PetRepository petRepository;
 
 
 
@@ -44,5 +49,14 @@ public class OwnerService {
             ownerRepository.save(owner);
         }
 
+    }
+
+    public void addPetToOwner(int id, Pet pet) {
+        if (ownerRepository.existsById(id)) {
+            Owner parent = new Owner();
+            parent.setId(id);
+            pet.setOwner(parent);
+            petRepository.save(pet);
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.example.demo.Controllers;
 
 import com.example.demo.Enteties.Owner;
+import com.example.demo.Enteties.Pet;
 import com.example.demo.Services.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -41,5 +42,9 @@ public class OwnerController {
         @PutMapping("/api/owners/{id}")
         public void updateOwner(@PathVariable int id, @RequestBody Owner owner) {
             ownerService.updateOwner(id, owner);
+        }
+        @PostMapping("/api/owners/{id}")
+        public void addPetToOwner(@PathVariable int id, @RequestBody Pet pet) {
+            ownerService.addPetToOwner(id, pet);
         }
 }

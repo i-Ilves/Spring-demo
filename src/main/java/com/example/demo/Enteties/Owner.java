@@ -14,7 +14,7 @@ public class Owner {
     private int id;
     private String name;
 
-    @OneToMany(mappedBy = "owner")
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
     private List<Pet> listOfPets;
 
     public Owner() {
