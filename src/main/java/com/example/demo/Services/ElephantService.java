@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ElephantService {
@@ -30,5 +31,14 @@ public class ElephantService {
             }
         }
         return listOfElephants;
+    }
+
+    public Elephant getElephantByName(String name) {
+        RestTemplate restTemplate = new RestTemplate();
+        Map response = restTemplate.getForObject(elephantsAPI + "elephants/name/" + name, Map.class);
+
+        Elephant elephant = new Elephant(response.get("name").toString(), response.get("species").toString(), response.get("note").toString(), response.get("wikilink").toString());
+        elephantRepository.save(elephant);
+        return elephant;
     }
 }

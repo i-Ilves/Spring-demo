@@ -25,6 +25,13 @@ public class Elephant {
         this.wikilink = wikilink;
     }
 
+    public Elephant(String name, String species, String note, String wikilink) {
+        this.name = name;
+        this.species = species;
+        this.note = note;
+        this.wikilink = wikilink;
+    }
+
     public int getId() {
         return id;
     }
